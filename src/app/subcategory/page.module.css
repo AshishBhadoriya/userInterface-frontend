@@ -1,0 +1,55 @@
+.container{
+    width:100%;
+    max-width:1200px;
+    margin:auto;
+    display:flex;
+    align-items:flex-start;
+    gap:30px;
+    padding:20px;
+    margin-top:90px;
+}
+
+.leftSection{
+    width: 350px;
+    display:flex;
+    flex-direction:column;
+    position:sticky;
+    top:-130px;
+
+}
+
+.leftFixedBox{
+    width: 100%;
+    height: 110vh;
+    overflow-y: auto;
+}
+
+.leftFixedBox::-webkit-scrollbar{
+    width: 0px;
+}
+
+.rightSection{
+    width:70%;
+    display:flex;
+    flex-direction:column;
+    gap:30px;
+}
+
+.sliderSection{
+    width:100%;
+    height:auto;
+}
+
+.contentSection{
+    width:100%;
+    display:flex;
+    align-items:flex-start;
+}
+
+.packageSection{
+    min-width:350px;
+    width:100%;
+    border:1px solid #c4c3c3;
+    border-top-left-radius:10px;
+}
+

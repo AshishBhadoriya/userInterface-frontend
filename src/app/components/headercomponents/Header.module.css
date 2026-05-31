@@ -1,0 +1,48 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: white;
+  height: 85px;
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.headerBg{
+  width:100%;
+  height:86px;
+  border-bottom:1px solid #e0e0e0;
+  position:fixed;
+  z-index:10;
+  padding-left:20px;
+  padding-right:20px;
+  box-sizing:border-box;
+  background:white
+}
+
+.logoBox {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: auto;
+}
+
+.searchBox {
+  width: 260px;
+  height: 48px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.searchText {
+  font-size: 14px;
+  line-height: 20px;
+  color: rgb(117, 117, 117);
+  font-weight: 400;
+  width: 75%;
+}
