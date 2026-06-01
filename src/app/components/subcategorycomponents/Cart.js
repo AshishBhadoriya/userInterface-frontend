@@ -4,6 +4,7 @@ import { LuMinus } from "react-icons/lu";
 import { LuPlus } from "react-icons/lu";
 import styles from "./SubCategory.module.css"
 import { Delete } from "@mui/icons-material";
+import { serverURL } from "@/app/services/FetchServices";
 
 export default function Cart({ cartItem, setCartItem }) {
   const totalOfferAmount = cartItem.reduce(
@@ -87,7 +88,7 @@ export default function Cart({ cartItem, setCartItem }) {
         </div>
       ) : (
         <div className={styles.emptyCart} >
-          <img src="/shopping-cart.png" style={{ width: "50px" }} />
+          <img src={`${serverURL}/images/shopping-cart.png`} style={{ width: "50px" }} />
           <p>No items in your cart</p>
         </div>
       )}

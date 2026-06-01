@@ -1,9 +1,9 @@
 "use client"
-import { Box, IconButton } from "@mui/material";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import { useState } from "react";
 import styles from "./SubCategory.module.css"
+import { serverURL } from "@/app/services/FetchServices";
 
 export default function Slider() {
 
@@ -28,9 +28,9 @@ export default function Slider() {
     return images.map((item,i)=>{
       return(<img
           key={i}
-          src={item}
+          src={`${serverURL}/images/${item}`}
           style={{
-            display: current==i ? "" : "none"
+            display: current==i ? "block" : "none"
           }}
           className={styles.image}
         />)

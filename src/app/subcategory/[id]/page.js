@@ -1,26 +1,51 @@
-"use client";
-import SubCategories from "../components/subcategorycomponents/SubCategories";
-import Slider from "../components/subcategorycomponents/Slider";
-import Packages from "../components/subcategorycomponents/Packages";
-import Promise from "../components/subcategorycomponents/Promise";
-import Cart from "../components/subcategorycomponents/Cart";
+"use client"
 import { useMediaQuery } from "@mui/material";
-import { useState } from "react";
-import Footer from "../components/footercomponents/Footer";
-import Header from "../components/headercomponents/Header";
+import { useEffect, useState } from "react";
 import styles from "./page.module.css";
+import Header from "@/app/components/headercomponents/Header";
+import SubCategories from "@/app/components/subcategorycomponents/SubCategories";
+import Cart from "@/app/components/subcategorycomponents/Cart";
+import Promise from "@/app/components/subcategorycomponents/Promise";
+import Slider from "@/app/components/subcategorycomponents/Slider";
+import Packages from "@/app/components/subcategorycomponents/Packages";
+import Footer from "@/app/components/footercomponents/Footer";
+import { postData } from "@/app/services/FetchServices";
+import { useParams } from "next/navigation";
 
 export default function subcategory() {
   const [cartItem, setCartItem] = useState([]);
-  const [position, setPosition] = useState("");
+  const [subCategory, setSubCategory] = useState([]);
+  const [categoryName,setCategoryName]=useState('')
   const halfScreen = useMediaQuery("(max-width:900px)");
+  const params=useParams()
+  const {id}= params
+
+  useEffect(()=>{
+      fetchAllSubCategory()
+    },[])
+
+
+  const fetchAllSubCategory=async()=>{
+    var response=await postData('userinterface/fetch_all_subcategory_by_categoryid',{categoryid:id})
+    setSubCategory(response.data)
+      if (response.data.length > 0) {
+    setCategoryName(response.data[0].categoryname);
+  }
+
+  }
+
+  useEffect(()=>{
+      fetchAllSubCategory()
+    },[])
+
+
   return (
     <div>
       <Header />
       <div className={styles.container}>
         <div className={styles.leftSection}>
           <div className={styles.leftFixedBox} >
-          <SubCategories position={position} setPosition={setPosition} />
+          <SubCategories data={subCategory} categoryName={categoryName} />
           <div style={{ width: "100%", display: halfScreen ? "block" : "none" }}>
             <Cart cartItem={cartItem} setCartItem={setCartItem} />
             <Promise />
@@ -34,8 +59,7 @@ export default function subcategory() {
               <Packages
                 cartItem={cartItem}
                 setCartItem={setCartItem}
-                position={position}
-                setPosition={setPosition}
+                data={subCategory} 
               />
             </div>
             <div

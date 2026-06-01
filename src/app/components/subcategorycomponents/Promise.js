@@ -1,3 +1,4 @@
+import { serverURL } from '@/app/services/FetchServices';
 import React from 'react'
 import { MdCheck } from "react-icons/md";
 
@@ -10,7 +11,7 @@ export default function Promise() {
         <p style={{display:'flex',alignItems:'center',fontSize:'14px'}} ><MdCheck size="20" />Hassle Free Booking</p>
         <p style={{display:'flex',alignItems:'center',fontSize:'14px'}} ><MdCheck size="20"/>Transparent Pricing</p>
       </div>
-      <img src="/stamp.jpg" style={{width:'60px',height:'60px'}}/> 
+      <img src={`${serverURL}/images/stamp.jpg`} style={{width:'60px',height:'60px'}}/> 
     </div>
   )
 }

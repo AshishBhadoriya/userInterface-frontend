@@ -1,40 +1,38 @@
+"use client"
 import { Grid } from "@mui/material";
 import React, { useState } from "react";
 import styles from "./SubCategory.module.css";
 import { IoIosArrowForward } from "react-icons/io";
+import { serverURL } from "@/app/services/FetchServices";
 
-const subcategory = [
-  { image: "offer.jpg", name: "Super saver packages" },
-  { image: "service.jpg", name: "service" },
-  { image: "repair.jpg", name: "Repair & gas refill" },
-  { image: "installation.jpg", name: "Installation/uninstallation" },
-];
 
-export default function SubCategories({ position, setPosition }) {
+export default function SubCategories({data,categoryName}) {
   const [active, setActive] = useState("");
   const [hover, setHover] = useState("");
 
   const fillSubcategory = () => {
-    return subcategory.map((item, i) => {
+
+    return data.map((item, i) => {
       return (
         <Grid size={4} key={i}>
+          
           <div
-            onClick={() => setActive(item.name)}
-            onMouseOver={() => setHover(item.name)}
+            onClick={() => setActive(item.subcategoryid)}
+            onMouseOver={() => setHover(item.subcategoryid)}
             onMouseLeave={() => setHover("")}
             className={styles.subCategoryIcon}
           >
             <img
-              src={item.image}
+              src={`${serverURL}/images/${item.subcategoryicon}`}
               style={{
                 width: "70px",
                 height: "70px",
-                border: active === item.name ? "2px solid black" : "none",
+                border: active === item.subcategoryid ? "2px solid black" : "none",
                 borderRadius: "10px",
                 padding: "2px",
               }}
             />
-            <p style={{ fontSize: "12px", color: "#4d4c4c" }}>{item.name}</p>
+            <p style={{ fontSize: "12px", color: "#4d4c4c" }}>{item.subcategoryname}</p>
             <div
               style={{
                 width: hover === item.name ? "90%" : "0%",
@@ -53,9 +51,9 @@ export default function SubCategories({ position, setPosition }) {
 
   return (
     <div className={styles.subCategoryContainer}>
-      <p className={styles.subCategoryHeading}>Ac Service and Repair</p>
+      <p className={styles.subCategoryHeading}>{categoryName}</p>
       <div className={styles.subCategoryRating}>
-        <img src="rating.png" style={{ width: "15px", height: "15px" }} />
+        <img src={`${serverURL}/images/rating.png`} style={{ width: "15px", height: "15px" }} />
         <p
           style={{
             borderBottom: "0.5px dashed #727272",
@@ -87,7 +85,7 @@ export default function SubCategories({ position, setPosition }) {
           <Grid size={12} style={{ width: "100%" }}>
             <div className={styles.subCategorySelectRow}>
               <span className={styles.subCategorySelectText}>
-                Select a service{" "}
+                Select a service
               </span>
               <div className={styles.subCategoryLine}></div>
             </div>

@@ -2,7 +2,7 @@
 import React from "react";
 import PriceCard from "./PriceCard";
 
-const data = [
+const dataa = [
   {
     name: "Super saver packages",
     subcategory: [
@@ -103,22 +103,19 @@ const data = [
   },
 ];
 
-export default function Packages({ cartItem, setCartItem }) {
+export default function Packages({ cartItem, setCartItem,data }) {
   const fillData = () => {
     return data.map((item, i) => {
       return (
         <div key={i} style={{ height: "auto" }}>
-          <p style={{ fontSize: "27px", fontWeight: "700" }}>{item.name}</p>
-          {item.subcategory.map((item, i) => {
-            return (
+          <p style={{ fontSize: "27px", fontWeight: "700" }}>{item.subcategoryname}</p>
               <PriceCard
                 data={item}
                 key={i}
                 cartItem={cartItem}
                 setCartItem={setCartItem}
+                id={item.subcategoryid}
               />
-            );
-          })}
           <div
             style={{
               width: "100%",
